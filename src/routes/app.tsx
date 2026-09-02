@@ -1,35 +1,25 @@
 import { useEffect } from "react";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuthState } from "@/hooks/useAuthState";
 
-export const Route = createFileRoute("/app")({
-  ssr: false,
-  head: () => ({
-    meta: [
-      { title: "派工儀表板 — FieldSync 派工雲" },
-      { name: "description", content: "FieldSync 派工雲的內部派工管理儀表板。" },
-      { name: "robots", content: "noindex" },
-      { property: "og:title", content: "派工儀表板 — FieldSync 派工雲" },
-      { property: "og:description", content: "FieldSync 派工雲的內部派工管理儀表板。" },
-    ],
-  }),
-  component: AppShell,
-});
-
-function AppShell() {
+export default function AppShell() {
   const navigate = useNavigate();
   const { user, loading } = useAuthState();
 
   useEffect(() => {
+    document.title = "派工儀表板 — FieldSync 派工雲";
+  }, []);
+
+  useEffect(() => {
     if (!loading && !user) {
-      navigate({ to: "/signin", replace: true });
+      navigate("/signin", { replace: true });
     }
   }, [loading, user, navigate]);
 
   async function handleSignOut() {
     await supabase.auth.signOut();
-    navigate({ to: "/signin", replace: true });
+    navigate("/signin", { replace: true });
   }
 
   if (loading || !user) {

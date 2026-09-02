@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 
 export function AuthForm({ mode }: { mode: "signin" | "signup" }) {
@@ -36,7 +36,7 @@ export function AuthForm({ mode }: { mode: "signin" | "signup" }) {
       return;
     }
 
-    navigate({ to: "/app" });
+    navigate("/app");
   }
 
   return (

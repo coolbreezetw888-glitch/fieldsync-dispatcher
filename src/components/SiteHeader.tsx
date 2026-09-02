@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { useAuthState } from "@/hooks/useAuthState";
 
 export function SiteHeader() {

@@ -1,46 +1,31 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Reveal } from "@/components/Reveal";
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "FieldSync 派工雲 — 一眼掌握班表，指派工單不衝突" },
-      {
-        name: "description",
-        content:
-          "FieldSync 派工雲為到府服務業者打造：視覺化排班行事曆、智慧人力調度與工單指派追蹤，讓客服人員避免撞班與人力衝突。",
-      },
-      { property: "og:title", content: "FieldSync 派工雲 — 一眼掌握班表，指派工單不衝突" },
-      {
-        property: "og:description",
-        content:
-          "See every technician's schedule at a glance — assign jobs without conflicts. 到府服務派工業者的內部排班與工單指派工具。",
-      },
-    ],
-  }),
-  component: LandingPage,
-});
 
 const features = [
   {
     title: "視覺化排班行事曆",
     en: "Visual Scheduling Calendar",
-    body: "以行事曆介面顯示每位服務人員的班表與空檔，客服人員一眼就能看懂誰有空、誰已經排滿。",
+    body: "以行事曆介面顯示每位服務人員的班表與空檔,客服人員一眼就能看懂誰有空、誰已經排滿。",
   },
   {
     title: "智慧人力調度",
     en: "Smart Crew Allocation",
-    body: "依技能、服務地區、可服務時段篩選可指派的人員，避免撞班與人力調度衝突。",
+    body: "依技能、服務地區、可服務時段篩選可指派的人員,避免撞班與人力調度衝突。",
   },
   {
     title: "工單指派與進度追蹤",
     en: "Job Assignment & Tracking",
-    body: "客服人員一鍵把工單指派給服務人員，即時掌握每張工單的服務進度與狀態。",
+    body: "客服人員一鍵把工單指派給服務人員,即時掌握每張工單的服務進度與狀態。",
   },
 ];
 
-function LandingPage() {
+export default function LandingPage() {
+  useEffect(() => {
+    document.title = "FieldSync 派工雲 — 一眼掌握班表,指派工單不衝突";
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -58,7 +43,7 @@ function LandingPage() {
               </span>
             </h1>
             <p className="mt-6 text-2xl font-medium text-foreground sm:text-3xl">
-              一眼掌握班表，指派工單不衝突
+              一眼掌握班表,指派工單不衝突
             </p>
             <p className="mt-3 text-base text-muted-foreground sm:text-lg">
               See every technician&apos;s schedule at a glance — assign jobs without conflicts.
@@ -84,7 +69,7 @@ function LandingPage() {
           <div className="mx-auto max-w-6xl px-5 py-20">
             <Reveal>
               <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                客服與服務人員的日常，一套系統搞定
+                客服與服務人員的日常,一套系統搞定
               </h2>
             </Reveal>
             <div className="mt-10 grid gap-6 md:grid-cols-3">
